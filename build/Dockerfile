@@ -13,8 +13,10 @@ RUN apt-get install -y nodejs
 RUN ln -s /usr/bin/nodejs /usr/bin/node
  
 RUN apt-get install -y npm
-RUN /usr/bin/npm install ws
-RUN /usr/bin/npm install node-static
+RUN npm config set strict-ssl false && \
+    /usr/bin/npm install ws && \
+    /usr/bin/npm install node-static && \
+    npm config set strict-ssl true
  
 EXPOSE 8080
 EXPOSE 80
